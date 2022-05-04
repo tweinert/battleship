@@ -1,1 +1,8 @@
-(()=>{const e=document.getElementById("content"),t=document.createElement("p");t.textContent="Test Successful",e.appendChild(t)})();
+/******/ (() => { // webpackBootstrap
+var __webpack_exports__ = {};
+/*!**********************!*\
+  !*** ./src/index.js ***!
+  \**********************/
+
+/******/ })()
+;
