@@ -26,4 +26,4 @@ it("Doesn't sink with half hits", () => {
     testShip.hit(1);
     testShip.hit(2);
     expect(testShip.isSunk()).toBe(false);
-})
+});
