@@ -1,7 +1,8 @@
 class Ship {
-    constructor(size, hits = []) {
+    constructor(size, isVertical = true, hits = []) {
         this.size = size;
         this.hits = hits;
+        this.isVertical = isVertical;
     }
 
     hit(position) {
@@ -11,6 +12,8 @@ class Ship {
     isSunk() {
         return this.hits.length == this.size;
     }
+
+    // TODO need reference to ship
 }
 
 export default Ship;
