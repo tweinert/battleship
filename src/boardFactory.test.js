@@ -37,3 +37,11 @@ it("Ship length is correctly placed", () => {
     expect(board.receiveAttack(1, 3)).toBeTruthy();
     expect(board.receiveAttack(1, 4)).toBeFalsy();
 });
+
+it("Ship can be sunk", () => {
+    board.placeShip(ship2, 1, 2);
+    board.receiveAttack(1, 2);
+    expect(ship2.isSunk()).toBeFalsy();
+    board.receiveAttack(1, 3);
+    expect(ship2.isSunk()).toBeTruthy();
+});

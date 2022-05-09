@@ -37,7 +37,6 @@ class Board {
         // if false, record coords of miss
         if (typeof this.grid[row][col] === "object" && this.grid[row][col] !== null) {
             this.grid[row][col].hit(1);
-            // TODO need way to determine what ship part to hit
             return true;
         } else {
             this.hits[row][col] = true;
