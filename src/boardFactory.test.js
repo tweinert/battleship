@@ -51,3 +51,10 @@ it("Missed shots are tracked", () => {
     expect(board.isMissedShot(8, 1)).toBe(true);
     expect(board.isMissedShot(9, 3)).toBe(undefined);
 });
+
+it("Detect when all ships are sunk", () => {
+    // destroy some ships here
+    expect(board.hasAllShipsSunk()).toBe(false);
+    // destroy all ships here
+    expect(board.hasAllShipsSunk()).toBe(true);
+});

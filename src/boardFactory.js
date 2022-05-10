@@ -3,16 +3,16 @@ import Ship from './shipFactory';
 const SIZE = 10;
 
 class Board {    
-    constructor(grid = [], missedShots = []) {
+    constructor(grid = [], gridHits = []) {
         this.grid = grid;
-        this.missedShots = missedShots;
+        this.gridHits = gridHits;
         this.initialize();
     }
 
     initialize() {
         // create grid and missedShots
         this.grid = Array.from(Array(SIZE), () => new Array(SIZE));
-        this.missedShots = Array.from(Array(SIZE), () => new Array(SIZE));
+        this.gridHits = Array.from(Array(SIZE), () => new Array(SIZE));
     }
 
     placeShip(ship, row, col) {
@@ -37,15 +37,32 @@ class Board {
         // if false, record coords of miss
         if (typeof this.grid[row][col] === "object" && this.grid[row][col] !== null) {
             this.grid[row][col].hit(1);
+            this.gridHits[row][col] = true;
             return true;
         } else {
-            this.missedShots[row][col] = true;
+            this.gridHits[row][col] = true;
             return false;
         }
     }
 
     isMissedShot(row, col) {
-        return this.missedShots[row][col];
+        return this.gridHits[row][col]
+            && typeof this.grid[row][col] !== "object";
+    }
+
+    hasAllShipsSunk() {
+        // probably need to iterate over all squares and check if all ship squares are hit
+        // row
+        for (let i = 0; i < SIZE; i++) {
+            // col
+            for (let j = 0; j < SIZE; j++) {
+                // if ship and not hit
+                if(typeof this.grid[i][j] === "object" && this.grid[i][j] !== null && !this.gridHits[i][j]) {
+                    return false;
+                }
+            }
+        }
+        return true;
     }
 }
 
