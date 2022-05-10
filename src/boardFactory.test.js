@@ -45,3 +45,9 @@ it("Ship can be sunk", () => {
     board.receiveAttack(1, 3);
     expect(ship2.isSunk()).toBeTruthy();
 });
+
+it("Missed shots are tracked", () => {
+    board.receiveAttack(8, 1);
+    expect(board.isMissedShot(8, 1)).toBe(true);
+    expect(board.isMissedShot(9, 3)).toBe(undefined);
+});

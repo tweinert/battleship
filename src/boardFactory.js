@@ -3,16 +3,16 @@ import Ship from './shipFactory';
 const SIZE = 10;
 
 class Board {    
-    constructor(grid = [], hits = []) {
+    constructor(grid = [], missedShots = []) {
         this.grid = grid;
-        this.hits = hits;
+        this.missedShots = missedShots;
         this.initialize();
     }
 
     initialize() {
-        // create grid and hits
+        // create grid and missedShots
         this.grid = Array.from(Array(SIZE), () => new Array(SIZE));
-        this.hits = Array.from(Array(SIZE), () => new Array(SIZE));
+        this.missedShots = Array.from(Array(SIZE), () => new Array(SIZE));
     }
 
     placeShip(ship, row, col) {
@@ -39,10 +39,13 @@ class Board {
             this.grid[row][col].hit(1);
             return true;
         } else {
-            this.hits[row][col] = true;
+            this.missedShots[row][col] = true;
             return false;
         }
-        
+    }
+
+    isMissedShot(row, col) {
+        return this.missedShots[row][col];
     }
 }
 
