@@ -1,8 +1,8 @@
 class Ship {
     constructor(size, isVertical = true, hits = []) {
         this.size = size;
-        this.hits = hits;
         this.isVertical = isVertical;
+        this.hits = hits;
     }
 
     hit(position) {

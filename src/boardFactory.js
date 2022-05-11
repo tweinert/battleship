@@ -51,13 +51,13 @@ class Board {
     }
 
     hasAllShipsSunk() {
-        // probably need to iterate over all squares and check if all ship squares are hit
+        // TODO ensure there are ships on the board if necessary
         // row
-        for (let i = 0; i < SIZE; i++) {
+        for (let row = 0; row < SIZE; row++) {
             // col
-            for (let j = 0; j < SIZE; j++) {
+            for (let col = 0; col < SIZE; col++) {
                 // if ship and not hit
-                if(typeof this.grid[i][j] === "object" && this.grid[i][j] !== null && !this.gridHits[i][j]) {
+                if(typeof this.grid[row][col] === "object" && this.grid[row][col] !== null && !this.gridHits[row][col]) {
                     return false;
                 }
             }

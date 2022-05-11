@@ -53,8 +53,15 @@ it("Missed shots are tracked", () => {
 });
 
 it("Detect when all ships are sunk", () => {
-    // destroy some ships here
+    board.placeShip(ship1, 1, 1);
+    board.placeShip(ship2, 1, 3);
+
+    board.receiveAttack(1, 1);
     expect(board.hasAllShipsSunk()).toBe(false);
-    // destroy all ships here
+
+    board.receiveAttack(1, 3);
+    expect(board.hasAllShipsSunk()).toBe(false);
+
+    board.receiveAttack(1, 4);
     expect(board.hasAllShipsSunk()).toBe(true);
 });
