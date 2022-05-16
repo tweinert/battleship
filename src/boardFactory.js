@@ -1,4 +1,3 @@
-import { CleanPlugin } from 'webpack';
 import Ship from './shipFactory';
 
 const SIZE = 10;

@@ -35,3 +35,7 @@ it("Can attack opponent's board", () => {
     expect(board1.hasAllShipsSunk()).toBe(true);
     expect(board2.hasAllShipsSunk()).toBe(false);
 });
+
+it("Computer can make random move", () => {
+    expect(() => player1.sendRandomAttack(board1)).not.toThrow(Error);
+});
