@@ -1,3 +1,4 @@
+import { CleanPlugin } from 'webpack';
 import Ship from './shipFactory';
 
 const SIZE = 10;
@@ -35,6 +36,10 @@ class Board {
         // check if ship is at coords
         // if true, send hit to ship
         // if false, record coords of miss
+        // TODO check if square has already been shot
+        if (this.gridHits[row][col]) {
+            throw new Error("Square has already been shot");
+        }
         if (typeof this.grid[row][col] === "object" && this.grid[row][col] !== null) {
             this.grid[row][col].hit(1);
             this.gridHits[row][col] = true;

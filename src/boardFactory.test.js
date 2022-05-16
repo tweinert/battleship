@@ -65,3 +65,8 @@ it("Detect when all ships are sunk", () => {
     board.receiveAttack(1, 4);
     expect(board.hasAllShipsSunk()).toBe(true);
 });
+
+it("Can't attack same square twice", () => {
+    board.receiveAttack(5, 5);
+    expect(() => board.receiveAttack(5, 5)).toThrow(Error);
+});
