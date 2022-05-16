@@ -1,7 +1,26 @@
-.board-container {
+#content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 600px 200px;
+}
 
+.board-container {
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    grid-row: 1 / 2;
 }
 
 .board {
-    
+    height: 500px;
+    width: 500px;
+    border: 1px solid black;
+}
+
+#player-board {
+    grid-column: 1 / 2;
+}
+
+#computer-board {
+    grid-column: 2 / 3;
 }
