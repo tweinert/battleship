@@ -1,6 +1,6 @@
 class Player {
-    constructor() {
-
+    constructor(isPlayer) {
+        this.isPlayer = isPlayer;
     }
 
     sendAttack(board, row, col) {

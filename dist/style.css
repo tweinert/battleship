@@ -15,12 +15,19 @@
     height: 500px;
     width: 500px;
     border: 1px solid black;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
 }
 
-#player-board {
+#player-board-container {
     grid-column: 1 / 2;
 }
 
-#computer-board {
+#computer-board-container {
     grid-column: 2 / 3;
+}
+
+.gridSquare {
+    border: 1px solid black;
 }
