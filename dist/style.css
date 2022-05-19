@@ -33,3 +33,16 @@
     font-size: 48px;
     text-align: center;
 }
+
+.grid-miss {
+    color: red;
+}
+
+.grid-ship {
+    background-color: blue;
+}
+
+.grid-ship-hit {
+    color: red;
+    background-color: blue;
+}

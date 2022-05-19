@@ -68,6 +68,18 @@ class Board {
         }
         return true;
     }
+
+    // 0 = empty, 1 = ship, 2 = missed shot, 3 = ship shot
+    getGridContent(row, col) {
+        if (typeof this.grid[row][col] === "object") {
+            return "grid-ship";
+        } else if (typeof this.grid[row][col] === "object" && this.grid[row][col] !== null && this.gridHits[row][col]) {
+            return "grid-ship-hit";
+        } else if (this.gridHits[row][col]) {
+            return "grid-miss";
+        }
+        return "grid-empty";
+    }
 }
 
 export default Board;

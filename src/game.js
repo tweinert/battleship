@@ -36,10 +36,8 @@ function startGame() {
 }
 
 function refreshGameBoard(board, isPlayer) {
-    // display grid squares
-    // const computerBoardDiv = document.getElementById("computer-board");
-
     let boardDiv;
+
     if (isPlayer) {
         boardDiv = document.querySelector("#player-board");
     } else {
@@ -57,7 +55,14 @@ function refreshGameBoard(board, isPlayer) {
             gridSquare.id = i.toString() + j.toString();
 
             if(!isPlayer) {
-                gridSquare.addEventListener("click", playerSendAttack, false)
+                gridSquare.addEventListener("click", playerSendAttack, false);
+            }
+
+            // TODO this is not functional, this does not work
+            let gridContent = board.getGridContent(i, j);
+            gridSquare.classList.add(gridContent);
+            if (gridContent === ".grid-miss") {
+                gridSquare.textContent = "X";
             }
 
             boardDiv.appendChild(gridSquare);
