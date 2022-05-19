@@ -32,17 +32,10 @@
     border: 1px solid black;
     font-size: 48px;
     text-align: center;
-}
-
-.grid-miss {
     color: red;
 }
 
-.grid-ship {
-    background-color: blue;
-}
-
-.grid-ship-hit {
-    color: red;
+#player-board > .grid-ship,
+#player-board > .grid-ship.hit {
     background-color: blue;
 }
