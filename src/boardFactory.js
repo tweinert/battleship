@@ -71,7 +71,7 @@ class Board {
 
     // 0 = empty, 1 = ship, 2 = missed shot, 3 = ship shot
     getGridContent(row, col) {
-        if (typeof this.grid[row][col] === "object") {
+        if (typeof this.grid[row][col] === "object" && !this.gridHits[row][col]) {
             return "grid-ship";
         } else if (typeof this.grid[row][col] === "object" && this.grid[row][col] !== null && this.gridHits[row][col]) {
             return "grid-ship-hit";

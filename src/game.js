@@ -61,7 +61,9 @@ function refreshGameBoard(board, isPlayer) {
             // TODO this is not functional, this does not work
             let gridContent = board.getGridContent(i, j);
             gridSquare.classList.add(gridContent);
-            if (gridContent === ".grid-miss") {
+            if (gridContent === "grid-miss") {
+                gridSquare.textContent = "o";
+            } else if (gridContent === "grid-ship-hit") {
                 gridSquare.textContent = "X";
             }
 
