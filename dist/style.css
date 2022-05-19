@@ -30,4 +30,6 @@
 
 .gridSquare {
     border: 1px solid black;
+    font-size: 48px;
+    text-align: center;
 }

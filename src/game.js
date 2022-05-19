@@ -34,11 +34,25 @@ function refreshGameBoard(board, isPlayer) {
 
             gridSquare.classList.add("gridSquare");
             gridSquare.setAttribute("style", "width:48px; height:48px");
-            gridSquare.id = i + ", " + j;
+            gridSquare.id = i.toString() + j.toString();
+
+            if(!isPlayer) {
+                gridSquare.addEventListener("click", playerSendAttack, false)
+            }
 
             boardDiv.appendChild(gridSquare);
         }
     }
+}
+
+function playerSendAttack(event) {
+    let coords = event.currentTarget.id;
+    let row = coords.charAt(0);
+    let col = coords.charAt(1);
+
+    computerBoard.receiveAttack(row, col);
+
+    event.currentTarget.textContent = "X";
 }
 
 export default startGame;
