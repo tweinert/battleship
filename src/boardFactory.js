@@ -32,10 +32,11 @@ class Board {
     }
 
     receiveAttack(row, col) {
-        // check if ship is at coords
-        // if true, send hit to ship
-        // if false, record coords of miss
-        // TODO check if square has already been shot
+        /*
+        check if ship is at coords
+        if true, send hit to ship
+        if false, record coords of miss
+        */
         if (this.gridHits[row][col]) {
             throw new Error("Square has already been shot");
         }

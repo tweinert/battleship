@@ -11,6 +11,7 @@ class Player {
         let row = this.getRandomInt(10);
         let col = this.getRandomInt(10);
         board.receiveAttack(row, col);
+        return board.getGridContent(row, col);
     }
 
     getRandomInt(max) {

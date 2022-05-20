@@ -76,24 +76,26 @@ function refreshGameBoard(board, isPlayer) {
 
 function playerSendAttack(event) {
     if (isPlayerTurn) {
-        isPlayerTurn = false;
         let coords = event.currentTarget.id;
         let row = coords.charAt(0);
         let col = coords.charAt(1);
 
         computerBoard.receiveAttack(row, col);
 
-        event.currentTarget.textContent = "X";
+        if (computerBoard.getGridContent(row, col) !== "grid-ship-hit") {
+            isPlayerTurn = false;
+            computerSendAttack();
+        }
 
         refreshGameBoard(computerBoard, false);
-
-        // dont do this if shot hit
-        computerSendAttack();
     }
 }
 
 function computerSendAttack() {
-    player2.sendRandomAttack(playerBoard);
+    let gridContent;
+    do {
+        gridContent = player2.sendRandomAttack(playerBoard);
+    } while (gridContent === "grid-ship-hit");
 
     refreshGameBoard(playerBoard, true);
 
