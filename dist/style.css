@@ -36,6 +36,6 @@
 }
 
 #player-board > .grid-ship,
-#player-board > .grid-ship.hit {
+#player-board > .grid-ship-hit {
     background-color: blue;
 }

@@ -15,6 +15,8 @@ let shipSmallBoard2;
 let shipMedBoard2;
 let shipLargeBoard2;
 
+let isPlayerTurn = true;
+
 function startGame() {
     playerBoard = new Board();
     computerBoard = new Board();
@@ -73,15 +75,29 @@ function refreshGameBoard(board, isPlayer) {
 }
 
 function playerSendAttack(event) {
-    let coords = event.currentTarget.id;
-    let row = coords.charAt(0);
-    let col = coords.charAt(1);
+    if (isPlayerTurn) {
+        isPlayerTurn = false;
+        let coords = event.currentTarget.id;
+        let row = coords.charAt(0);
+        let col = coords.charAt(1);
 
-    computerBoard.receiveAttack(row, col);
+        computerBoard.receiveAttack(row, col);
 
-    event.currentTarget.textContent = "X";
+        event.currentTarget.textContent = "X";
 
-    refreshGameBoard(computerBoard);
+        refreshGameBoard(computerBoard, false);
+
+        // dont do this if shot hit
+        computerSendAttack();
+    }
+}
+
+function computerSendAttack() {
+    player2.sendRandomAttack(playerBoard);
+
+    refreshGameBoard(playerBoard, true);
+
+    isPlayerTurn = true;
 }
 
 function placeShips() {
