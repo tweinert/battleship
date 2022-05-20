@@ -10,7 +10,12 @@ class Player {
     sendRandomAttack(board) {
         let row = this.getRandomInt(10);
         let col = this.getRandomInt(10);
-        board.receiveAttack(row, col);
+        try {
+            board.receiveAttack(row, col);
+        } catch (err) {
+            console.log(err);
+            this.sendRandomAttack(board);
+        }
         return board.getGridContent(row, col);
     }
 

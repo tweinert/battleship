@@ -72,6 +72,14 @@ function refreshGameBoard(board, isPlayer) {
             boardDiv.appendChild(gridSquare);
         }
     }
+
+    if (board.hasAllShipsSunk()) {
+        if (isPlayer) {
+            alert("You is Win");
+        } else {
+            alert("You is Lose");
+        }
+    }
 }
 
 function playerSendAttack(event) {
@@ -95,7 +103,7 @@ function computerSendAttack() {
     let gridContent;
     do {
         gridContent = player2.sendRandomAttack(playerBoard);
-    } while (gridContent === "grid-ship-hit");
+    } while (gridContent === "grid-ship-hit" || gridContent === "grid-hit");
 
     refreshGameBoard(playerBoard, true);
 
