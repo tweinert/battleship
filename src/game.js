@@ -74,7 +74,7 @@ function refreshGameBoard(board, isPlayer) {
     }
 
     if (board.hasAllShipsSunk()) {
-        if (isPlayer) {
+        if (!isPlayer) {
             alert("You is Win");
         } else {
             alert("You is Lose");
@@ -110,7 +110,8 @@ function computerSendAttack() {
     isPlayerTurn = true;
 }
 
-function placeShips() {
+// TODO change to take inputs from form
+function placeShipsFixed() {
     playerBoard.placeShip(shipSmallBoard1, 0, 0);
     playerBoard.placeShip(shipMedBoard1, 0, 2);
     playerBoard.placeShip(shipLargeBoard1, 0, 5);
@@ -118,6 +119,32 @@ function placeShips() {
     computerBoard.placeShip(shipSmallBoard2, 0, 0);
     computerBoard.placeShip(shipMedBoard2, 0, 2);
     computerBoard.placeShip(shipLargeBoard2, 0, 5);
+}
+
+function placeShips() {
+    let shipSmallRow = Number(document.getElementById("ship-small-row").value);
+    let shipSmallCol = Number(document.getElementById("ship-small-col").value);
+
+    let shipMedRow = Number(document.getElementById("ship-med-row").value);
+    let shipMedCol = Number(document.getElementById("ship-med-col").value);
+    
+    let shipLargeRow = Number(document.getElementById("ship-large-row").value);
+    let shipLargeCol = Number(document.getElementById("ship-large-col").value);
+
+    playerBoard.placeShip(shipSmallBoard1, shipSmallRow, shipSmallCol);
+    console.log("1");
+    playerBoard.placeShip(shipMedBoard1, shipMedRow, shipMedCol);
+    console.log("2");
+    playerBoard.placeShip(shipLargeBoard1, shipLargeRow, shipLargeCol);
+    console.log("3");
+
+    computerBoard.placeShip(shipSmallBoard2, getRandomInt(8), getRandomInt(10));
+    computerBoard.placeShip(shipMedBoard2, getRandomInt(7), getRandomInt(10));
+    computerBoard.placeShip(shipLargeBoard2, getRandomInt(6), getRandomInt(10));
+}
+
+function getRandomInt(max) {
+    return Math.floor(Math.random() * max);
 }
 
 export default startGame;

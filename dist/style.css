@@ -39,3 +39,7 @@
 #player-board > .grid-ship-hit {
     background-color: blue;
 }
+
+.player-inputs {
+    margin: 0 auto;
+}
